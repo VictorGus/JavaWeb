@@ -2,9 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<div class = "search">
+    <form method = "post" action = "filter">
+        <input type = "text" name = "tag">
+        <button type = "submit">Search</button>
+    </form>
+</div>
+<div>
+    <form method="post">
+        <input type = "text" name = "text" placeholder="Enter your message"/>
+        <input type = "text" name = "tag" placeholder="Enter tag for your message"/>
+        <button type = "submit">Enter</button>
+    </form>
+</div>
+<div>
+    <tr align="right" valign="top" th:each="message : ${messages}">
+        <td th:text="${message.tag}" alt="Tag">Tag</td>
+        <td th:text="${message.text}" alt="Text">Text</td>
+    </tr>
+</div>
 </body>
 </html>
